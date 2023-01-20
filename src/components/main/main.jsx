@@ -6,15 +6,23 @@ import { ApiService } from "../../service/apiServise";
 
 const Main = () => {
 	const [selectcategory, setselectcategory] = useState("New");
-	console.log(process.env.REACT_APP_PUBLIC_KEY);
+	const [videos, setsetvideos] = useState([]);
 
 	const setselectcategoryHandler = (name) => setselectcategory(name);
 
-	useEffect(() => {
-		ApiService.fatching("search").then((res) => {
-			console.log(res);
-		});
-	}, []);
+    useEffect(() => {
+			
+			const getData = () => {
+				try {
+					ApiService.fatching(
+						`search?part=snippet&q=${selectcategory}`
+					).then((res) => setsetvideos(res.items));
+				} catch (error) {
+					console.log(error);
+				}
+			};
+			getData();
+		}, [selectcategory]);
 
 	return (
 		<Stack>
@@ -25,11 +33,11 @@ const Main = () => {
 			<Box p={2} sx={{ height: "90vh" }}>
 				<Container maxWidth={"90%"}>
 					<Typography variant={"h4"} fontWeight={"bold"}>
-						{selectcategory}{" "}
-						<span style={{ color: colors.secondary }}>
-							<Videos />
-						</span>
+						{selectcategory}
+						{" "}
+						<span style={{ color: colors.secondary }}>Videos</span>
 					</Typography>
+					<Videos videos={videos} />
 				</Container>
 			</Box>
 		</Stack>

@@ -50,3 +50,15 @@
 .category-btn:hover span {
 	color: #fff !important;
 }
+
+@media screen and (max-width: 600px) {
+	.search-bar {
+		width: 200px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.search-bar {
+		width: 160px;
+	}
+}
