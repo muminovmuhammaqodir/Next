@@ -3,9 +3,13 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+* {
+	text-decoration: none;
+	color: black;
+}
 
 ::-webkit-scrollbar {
-	width: 0;
+	width: 6px;
 	height: 0;
 }
 
@@ -51,9 +55,18 @@
 	color: #fff !important;
 }
 
+.react-palyer {
+	height: 77vh !important;
+	width: 100% !important;
+}
+
 @media screen and (max-width: 600px) {
 	.search-bar {
 		width: 200px;
+	}
+	.react-palyer {
+		height: 45vh !important;
+		width: 100% !important;
 	}
 }
 
